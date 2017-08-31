@@ -20,8 +20,12 @@
     <PostBuildEvent></PostBuildEvent>
     <PreBuildEvent></PreBuildEvent>
   </PropertyGroup>
-
-  <Target Name="CopyPackage" AfterTargets="Pack" Condition="'$(Configuration)' == 'Release'">
+   
+  <PropertyGroup>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+   
+   <Target Name="CopyPackage" AfterTargets="Pack" Condition="'$(Configuration)' == 'Release'">
     <Copy SourceFiles="$(OutputPath)\..\\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(OutputPath)\..\..\..\..\..\NuGet\FeatureToggleNugetTestFeed" />
   </Target>
 </Project>
